@@ -12,7 +12,7 @@ Si ambos nombres son iguales pero uno tiene algunas letras en mayusculas cuando 
 #include <stdio.h>
 #include <string.h>
 
-char nombre1[15];
+char nombre1[15] = " ";
 int pos_abc1 = 27;
 char nombre2[15];
 int pos_abc2 = 27;
@@ -55,7 +55,7 @@ int main ()
         }
         ++contador;
         flag = 0;
-        for (i=1;i<15 && pos_abc2 == pos_abc1;++i)
+        for (i=1;i<15 && pos_abc2 == pos_abc1 && strcmp (nombre2, "FIN") != 0;++i)
         {
             for (j=0;j<26;++j)
             {
@@ -77,13 +77,19 @@ int main ()
                 pos_abc1 = 27;
             }
         }
-        if (pos_abc2 < pos_abc1)
+        if (pos_abc2 < pos_abc1 && strcmp (nombre2, "FIN") != 0)
         {
             strcpy (nombre1, nombre2);
             pos_abc1 = pos_abc2;
-            strcpy (nombre2," ");
             pos_abc2 = 27;
         }
     }
-    printf ("\nEl primer nombre en orden alfabetico es %s.",nombre1);
+    if (strcmp (nombre1, " ") != 0)
+    {
+        printf ("\nEl primer nombre en orden alfabetico es %s.",nombre1);
+    }
+    else
+    {
+        printf ("\nSe ha terminado el programa sin haber ingresado ningun nombre");
+    }
 }
