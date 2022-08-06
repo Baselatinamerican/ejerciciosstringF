@@ -4,6 +4,11 @@ No sabemos cuántos nombres ingresará.
 Luego de finalizar el ingreso, mostrar en pantalla cuál es el primer nombre en orden alfabético de todos los ingresados.
 */
 
+/*
+si ambos nombres son iguales pero uno tiene una letra más, el que esta antes en la lista es el de menos letras.
+Si ambos nombres son iguales pero uno tiene algunas letras en mayusculas cuando el otro no, pasa como que son iguales
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -54,14 +59,22 @@ int main ()
         {
             for (j=0;j<26;++j)
             {
-                if (nombre1[i] == abc[j])
+                if (nombre1[i] == abc[j] || nombre1[i] == ABC[j])
                 {
                     pos_abc1 = j;
                 }
-                if (nombre2[i] == abc[j])
+                if (nombre2[i] == abc[j] || nombre2[i] == ABC[j])
                 {
                     pos_abc2 = j;
                 }
+            }
+            if (nombre1[i]==NULL)
+            {
+                pos_abc2 = 27;
+            }
+            if (nombre2[i]==NULL)
+            {
+                pos_abc1 = 27;
             }
         }
         if (pos_abc2 < pos_abc1)
